@@ -87,9 +87,6 @@ document.addEventListener('scroll', function (e) {
     }
 })
 
-
-
-
 /**
  * End Main Functions
  */
