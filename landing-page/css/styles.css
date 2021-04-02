@@ -82,12 +82,6 @@ section {
     color: #fff;
 }
 
-.navbar__menu .menu__link:hover {
-    background: rgb(99, 95, 95);
-    color: rgba(0, 13, 60, 1);
-    transition: ease 0.3s all;
-}
-
 /* Header Styles */
 .page__header {
     background: rgb(56, 51, 51);
@@ -193,9 +187,14 @@ section:nth-of-type(3n + 1) .landing__container::after {
 /* ---- Theme State Rules ---- */
 /* Section Active Styles */
 /* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
+
+li.your-active-class {
+    background-color: rgba(175, 22, 22, 0.3);
+}
+
 section.your-active-class {
     background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(150, 26, 26, 0.2) 0%, rgba(150, 26, 26, 0.2) 100%);
+    background: linear-gradient(0deg, rgba(175, 22, 22, 0.3) 0%, rgba(175, 22, 22, 0.2) 100%);
 }
 
 section.your-active-class .landing__container::before {

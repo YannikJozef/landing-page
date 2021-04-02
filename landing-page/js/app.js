@@ -37,6 +37,7 @@ for (const section of sections) {
     const aTag = document.createElement('a');
 
     // adding attributes, classes and appending created elements
+    newLis.setAttribute('id', 'li' + liText.replace(' ', '').toLowerCase())
     aTag.classList.add('menu__link')
     aTag.setAttribute('href', '#' + liText.replace(' ', '').toLowerCase());
     aTag.insertAdjacentText('beforeend', liText);
@@ -64,21 +65,23 @@ document.addEventListener('scroll', function (e) {
 
         // define local variables
 
-        const rect = element.getBoundingClientRect();
-        const isInViewport = rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+        const elementTop = element.offsetTop - 150;
+        const elementBottom = (element.offsetTop + element.offsetHeight) - 150;
+        const isInViewport = pageYOffset >= elementTop && pageYOffset < elementBottom;
+        const liId = 'li' + element.getAttribute('id');
+        const getLiId = document.getElementById(liId);
 
-        // adding the 'your-active-class' to those section in the viewport and removing it from those outside the viewport
+        // adding the 'your-active-class' to those elements in the viewport and removing it from those outside the viewport; for the section and the li elements
 
         if (isInViewport) {
             if (!element.classList.contains('your-active-class')) {
-                element.classList.add('your-active-class')
+                element.classList.add('your-active-class');
+                getLiId.classList.add('your-active-class');
             };
         } else {
             if (element.classList.contains('your-active-class')) {
-                element.classList.remove('your-active-class')
+                element.classList.remove('your-active-class');
+                getLiId.classList.remove('your-active-class');
             };
         }
     }
